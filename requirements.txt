@@ -1,0 +1,6 @@
+pandas
+openpyxl
+requests
+streamlit
+psycopg[binary]>=3.2,<4
+
