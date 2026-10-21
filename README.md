@@ -6,6 +6,24 @@ Proyecto de portafolio para explorar datos abiertos de movilidad urbana de Bogot
 
 Construir un flujo reproducible que descargue o reciba archivos oficiales, los limpie y permita comparar patrones de movilidad con sus fechas y limitaciones claramente documentadas.
 
+## Aplicación en línea
+
+[Ver Bogotá en Movimiento](https://bogota-en-movimiento-ggbjhvvrzhma5ykpbx8xjv.streamlit.app/)
+
+![Captura del dashboard Bogotá en Movimiento](docs/images/dashboard.png)
+
+## Cobertura y cómo interpretar los resultados
+
+El snapshot público incluido en este repositorio contiene aforos observados entre **2021-05-06 y 2026-10-15** para **172 nodos**, en las modalidades bicicleta y vehículo. Es una selección de estudios descargados del Observatorio de Movilidad, no una cobertura completa de Bogotá ni una serie continua o en tiempo real.
+
+- La disponibilidad de fechas, horarios y movimientos cambia según el nodo, la modalidad y la ficha de cada estudio. Usa los filtros para revisar cada combinación.
+- Los intervalos sin filas son datos ausentes; no representan un conteo de cero.
+- Los conteos son observaciones registradas en intervalos. No equivalen a personas únicas, viajes únicos ni al total de movilidad de la ciudad.
+- Los ZIP se descargan manualmente del visor; el portal limita cada selección a 20 nodos. Para actualizar el dashboard se agregan los ZIP a `data/incoming/`, se ejecuta el flujo de actualización y se publica el snapshot actualizado en GitHub.
+- El mapa incluye los nodos con coordenadas válidas. Localidad, UPZ y Barrio Común se asignan por superposición cartográfica; UPZ es una referencia histórica y Barrio Común no es una validación en terreno.
+
+Consulta [`docs/data_dictionary.md`](docs/data_dictionary.md) para conocer las columnas, las reglas de limpieza y las limitaciones metodológicas.
+
 ## Fuente inicial
 
 - Observatorio de Movilidad de Bogotá, mapa de volúmenes vehiculares: <https://observatorio.movilidadbogota.gov.co/mapas/volumenes-vehiculares>
@@ -42,7 +60,7 @@ git status
 
 ## Estado
 
-Primera versión del flujo local: archivos fuente en `data/raw/`, limpieza a formato tabular y resúmenes por intervalo. Las fuentes y sus diferencias de cobertura están descritas en `docs/data_dictionary.md`.
+Dashboard público desplegado en Streamlit Community Cloud. El dataset de la aplicación se mantiene como snapshot versionado en `data/public/aforos_limpios.csv.gz`; las fuentes originales y los datos de trabajo no se publican. Las fuentes y diferencias de cobertura están descritas en `docs/data_dictionary.md`.
 
 ## Ejecutar el flujo local
 
